@@ -1,0 +1,71 @@
+.bg-light-blue{
+    background-color: #336699;
+}
+
+hr {
+    background-color: grey;
+    height: 2px;
+}
+
+.bordered {
+  border-style: double;
+  padding: 14px;
+}
+
+.row.display-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.row.display-flex > [class*='col-'] {
+  display: flex;
+  flex-direction: column;
+}
+
+h4 {
+  display: block;
+  height: 55px;
+}
+
+.error {
+  color: red;
+}
+
+.dropdown-menu {
+  min-width: 300px;
+}
+
+.error {
+  color: red;
+}
+
+.success {
+  color: #61c45c;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.img-center {
+  display: block;
+  margin: auto;
+}
+
+#mainpage {
+  min-height: 865px;
+  background-size: cover;
+  background-image:
+   linear-gradient(
+     rgba(0, 0, 0, 0.7),
+     rgba(0, 0, 0, 0.7)
+   ),
+   url(../images/cover.jpg);
+}
+
+#myfooter {
+  height: 62px;
+  font-size: 18px;
+}
+
+#myfooter p {
+  padding-top: 18px;
+}
