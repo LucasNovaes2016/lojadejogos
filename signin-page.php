@@ -15,8 +15,8 @@ $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
 $message = "";
 $is_message_error = true;
-$username = $password = "";
-$username_error = $password_error = "";
+$email = $password = "";
+$email_error = $password_error = "";
 
 $case = test_input($_GET["loginattempt"]);
 
@@ -25,7 +25,7 @@ if ($case==1)
   $message = "Você deve preencher todos os campos para entrar";
 } else if ($case==2)
 {
-  $message = "O username digitado não existe";
+  $message = "O email digitado não existe";
 } else if ($case==3)
 {
   $message = "Campos Inválidos";
@@ -35,34 +35,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $message = "Preencha todos os campos abaixo";
   $is_message_error = false;
 
-  $username = htmlspecialchars($_POST["username"]);
+  $email = htmlspecialchars($_POST["email"]);
   $password = htmlspecialchars($_POST["password"]);
 
-  if (empty($_POST["username"])) {
-    $username_error = "Digite seu nome";
+  if (empty($_POST["email"])) {
+    $email_error = "Digite seu email";
   }
 
   if (empty($_POST["password"])) {
     $password_error = "Digite sua senha";
   }
 
-  if ($username_error == "" && $password_error == "")
+  if ($email_error == "" && $password_error == "")
   {
-    // Verifica se o usuario digitado existe
-    $query = "SELECT * FROM usuarios WHERE username = ? LIMIT 1";
+    // Verifica se o email digitado está vinculado a alguma conta de usuario
+    $query = "SELECT * FROM usuarios WHERE email = ? LIMIT 1";
     $stm = $pdo->prepare($query);
-    $stm->execute([$username]);
+    $stm->execute([$email]);
 
     if ($stm->rowCount()==0)
     {
-      $message = "Username digitado não existe. ";
+      $message = "O email digitado não está vinculado a nenhuma conta. ";
       $is_message_error = true;
     } else {
       $usuario = $stm->fetch(PDO::FETCH_ASSOC);
       $dbpassword = $usuario['pwd'];
       $password = PASSWORD_VERIFY($password, $dbpassword);
 
-      if ($username==$usuario['username'] && $password==$dbpassword)
+      if ($email==$usuario['email'] && $password==$dbpassword)
       {
         // Deu Certo
         $id = $usuario['id'];
@@ -94,9 +94,9 @@ function test_input($data) {
      <div class="row justify-content-center">
      <form method="post" action="<?php echo htmlspecialchars("signin-page.php?loginattempt=$case");?>" class="col-md-6">
         <div class="form-group">
-           <label for="name"><b>Username: </b></label>
-           <input type="text" name="username" value="<?php echo isset($_POST['username']) ? $username : ''; ?>" class="form-control" aria-describedby="emailHelp" placeholder="Sua username">
-           <span class="error"> <?php echo $username_error; ?> </span>
+           <label for="name"><b>Email: </b></label>
+           <input type="text" name="email" value="<?php echo isset($_POST['email']) ? $email : ''; ?>" class="form-control" aria-describedby="emailHelp" placeholder="Seu Email">
+           <span class="error"> <?php echo $email_error; ?> </span>
         </div>
         <div class="form-group">
            <label for="password"> <b> Senha: </b> </label>
@@ -107,9 +107,12 @@ function test_input($data) {
           <a href="index.php" class="btn btn-danger"> Cancelar </a>
            <button type="submit" class="btn btn-success"> Entrar </button>
         </div>
+        <a href="forgot-password.php">Esqueci minha senha.</a>
         <h4 class="mt-5"> Ainda não tem uma conta? Cadastre-se. É de graça! </h4>
         <a class="btn btn-primary btn-lg mt-2" href="register.php">Realizar Cadastro</a>
      </form>
+     <div class="row justify-content-center">
+     </div>
    </div>
  </div>
 

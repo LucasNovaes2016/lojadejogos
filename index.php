@@ -17,18 +17,18 @@
 
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    $username = htmlspecialchars($_POST["username"]);
+    $email = htmlspecialchars($_POST["email"]);
     $password = htmlspecialchars($_POST["password"]);
 
     // Verifica se todos os campos foram preenchidos...
-    if (empty($username) || empty($password))
+    if (empty($email) || empty($password))
     {
       header('Location: signin-page.php?loginattempt=1');
     } else {
       // Verifica se o usuario digitado existe
-      $query = "SELECT * FROM usuarios WHERE username = ? LIMIT 1";
+      $query = "SELECT * FROM usuarios WHERE email = ? LIMIT 1";
       $stm = $pdo->prepare($query);
-      $stm->execute([$username]);
+      $stm->execute([$email]);
 
       if ($stm->rowCount()==0)
       {
@@ -39,7 +39,7 @@
         $dbpassword = $usuario['pwd'];
         $password = PASSWORD_VERIFY($password, $dbpassword);
 
-        if ($username==$usuario['username'] && $password==$dbpassword)
+        if ($email==$usuario['email'] && $password==$dbpassword)
         {
           // Deu Certo
           $id = $usuario['id'];
@@ -68,8 +68,8 @@
       <div class="collapse navbar-collapse" id="navbarNav">
          <ul class="navbar-nav ml-auto">
              <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="form-inline">
-               <label class="sr-only" for="inputUsername">Username</label>
-               <input type="text" name="username" class="form-control mb-2 mr-sm-2" id="inlineFormInputUsername2" placeholder="Username">
+               <label class="sr-only" for="inputUserEmail">Email</label>
+               <input type="email" name="email" class="form-control mb-2 mr-sm-2" id="inlineFormInputUsername2" placeholder="Email">
                <label class="sr-only" for="inputSenha">Senha</label>
                <div class="input-group mb-2 mr-sm-2">
                   <input type="password" name="password" class="form-control" id="inlineFormInputGroupPassword2" placeholder="Senha">
@@ -84,7 +84,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-12 col-lg-7 mt-5">
-        <h1 class="text-white display-4 d-none d-md-block"> GameStore : A maior comunidade de gamers da America Latina</h1>
+        <h1 class="text-white display-4 d-none d-md-block"> GameStore : A maior loja de games da America Latina</h1>
         <h2 class="text-white"> Ainda não é membro? Crie uma conta gratuitamente: </h2>
       </div>
     </div>

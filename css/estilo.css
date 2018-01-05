@@ -50,6 +50,14 @@ h4 {
   margin: auto;
 }
 
+.forgot-password-text {
+  font-size: 15px;
+}
+
+form a {
+  font-size: 18px;
+}
+
 #mainpage {
   min-height: 865px;
   background-size: cover;

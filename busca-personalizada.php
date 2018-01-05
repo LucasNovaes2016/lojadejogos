@@ -1,5 +1,11 @@
 <?php
-   require('config/config.php');
+  session_start();
+  require('config/config.php');
+
+  if (!isset($_SESSION['id'])) {
+    header("Location: " . ROOT_URL);
+    exit();
+  }
 
    $name_error = $year_error = $category_error = $platform_error = $min_age_error = $price_range_error = "";
    $game_name = $year = $category = $platform = $min_age = $price_range = "";
@@ -210,7 +216,10 @@
                </select>
                <span class="error"> <?php echo $min_age_error; ?> </span>
             </div>
-            <input class="btn btn-success pull-right" type="submit" value="Pesquisar">
+            <div class="text-right">
+            <a href="<?php echo ADMIN_URL;?>" class="btn btn-danger">Cancelar</a>
+            <input class="btn btn-success" type="submit" value="Pesquisar">
+          </div>
          </form>
       </div>
    </div>

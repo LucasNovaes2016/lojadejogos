@@ -1,5 +1,11 @@
 <?php
-   require('config/config.php');
+  session_start();
+  require('config/config.php');
+
+  if (!isset($_SESSION['id'])) {
+    header("Location: " . ROOT_URL);
+    exit();
+  }
 
    $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';';
    $pdo = new PDO ($dsn, DB_USER, DB_PASS);
@@ -243,7 +249,10 @@
             <div class="form-group">
                <label for="imagem"><b> Selecione uma imagem para o jogo: </b></label>
                <input type="file" name="file" required> <br> <br>
-               <input class="btn btn-success pull-right" type="submit" value="Adicionar Jogo">
+               <div class="text-right">
+                 <a href="<?php echo ADMIN_URL;?>" class="btn btn-danger">Cancelar</a>
+               <input class="btn btn-success" type="submit" value="Adicionar Jogo">
+             </div>
                <span class="error"> <?php echo $image_error; ?> </span>
             </div>
          </form>

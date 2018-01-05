@@ -1,5 +1,11 @@
 <?php
+      session_start();
       require('config/config.php');
+
+      if (!isset($_SESSION['id'])) {
+        header("Location: " . ROOT_URL);
+        exit();
+      }
 
       $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';';
       $pdo = new PDO ($dsn, DB_USER, DB_PASS);
