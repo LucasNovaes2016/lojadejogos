@@ -118,7 +118,7 @@
          $year = "empty";
        }
        // Redirecionando para a pagina inicial com os argumentos da busca personalizada
-       header("Location: ".ADMIN_URL."?game_name=$game_name&year=$year&category=$category&platform=$platform&min_age=$min_age&price_range=$price_range");
+       header("Location: ".INICIO_URL."?game_name=$game_name&year=$year&category=$category&platform=$platform&min_age=$min_age&price_range=$price_range");
      }
 
    }
@@ -217,7 +217,7 @@
                <span class="error"> <?php echo $min_age_error; ?> </span>
             </div>
             <div class="text-right">
-            <a href="<?php echo ADMIN_URL;?>" class="btn btn-danger">Cancelar</a>
+            <a href="<?php echo INICIO_URL;?>" class="btn btn-danger">Cancelar</a>
             <input class="btn btn-success" type="submit" value="Pesquisar">
           </div>
          </form>

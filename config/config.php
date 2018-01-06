@@ -1,5 +1,5 @@
 <?php
-  define('ADMIN_URL', 'http://localhost/estudos/lojadejogos/admin.php');
+  define('INICIO_URL', 'http://localhost/estudos/lojadejogos/inicio.php');
   define('ROOT_URL', 'http://localhost/estudos/lojadejogos/index.php');
   define('DB_HOST', 'localhost');
   define('DB_USER', 'root');

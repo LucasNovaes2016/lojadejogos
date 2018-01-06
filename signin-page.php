@@ -67,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Deu Certo
         $id = $usuario['id'];
         $_SESSION['id'] = $id;
-        header('Location: admin.php');
+        header('Location: ' . INICIO_URL);
       } else {
         $message = "Senha inválida";
         $is_message_error = true;

@@ -4,7 +4,7 @@
 
   if (isset($_SESSION['id']))
   {
-    header('Location: admin.php');
+    header('Location: ' . INICIO_URL);
   }
 
   $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';';
@@ -43,8 +43,10 @@
         {
           // Deu Certo
           $id = $usuario['id'];
+          $is_user_admin = $usuario['admin'];
           $_SESSION['id'] = $id;
-          header('Location: admin.php');
+          $_SESSION['admin'] = $is_user_admin;
+          header('Location: ' . INICIO_URL);
 
         } else {
           header('Location: signin-page.php?loginattempt=3');

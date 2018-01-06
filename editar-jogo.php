@@ -2,8 +2,12 @@
       session_start();
       require('config/config.php');
 
-      if (!isset($_SESSION['id'])) {
+      if (!isset($_SESSION['admin'])) {
         header("Location: " . ROOT_URL);
+        exit();
+      } else if (!$_SESSION['admin'])
+      {
+        header("Location: " . INICIO_URL);
         exit();
       }
 
@@ -184,7 +188,7 @@
 
             // Execute the statement
             $stm->execute([$game_name, $year, $category, $platform, $min_age, $price, $id]);
-            header("Location: ".ADMIN_URL);
+            header("Location: ". INICIO_URL);
            }
          } else {
            // Caso exista uma imagem
@@ -225,7 +229,7 @@
                if ($error !== UPLOAD_ERR_OK) {
                    $image_error = 'Erro ao fazer o upload: '.$error;
                } else if (move_uploaded_file($tmp_name, IMG_DIR . $img_name . $extension)) {
-                   header("Location: ".ADMIN_URL);
+                   header("Location: ". INICIO_URL);
                }
              }
 
@@ -330,7 +334,7 @@
             <input type="file" name="file"> <br> <br>
             <span class="error"> <?php echo $image_error; ?> </span>
             <div class="text-right">
-               <a href="<?php echo ADMIN_URL;?>" class="btn btn-primary">Cancelar</a>
+               <a href="<?php echo INICIO_URL;?>" class="btn btn-primary">Cancelar</a>
                <input class="btn btn-success" type="submit" value="Aplicar Alterações">
             </div>
          </form>
