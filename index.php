@@ -42,10 +42,14 @@
         if ($email==$usuario['email'] && $password==$dbpassword)
         {
           // Deu Certo
-          $id = $usuario['id'];
-          $is_user_admin = $usuario['admin'];
-          $_SESSION['id'] = $id;
-          $_SESSION['admin'] = $is_user_admin;
+          $_SESSION['id'] = $usuario['id'];
+          $_SESSION['admin'] = $usuario['admin'];
+          $_SESSION['nome'] = $usuario['nome'];
+          $_SESSION['sexo'] = $usuario['sexo'];
+          $_SESSION['nascimento'] = $usuario['nascimento'];
+          $_SESSION['username'] = $usuario['username'];
+          $_SESSION['email'] = $usuario['email'];
+          $_SESSION['senha'] = $usuario['pwd'];
           header('Location: ' . INICIO_URL);
 
         } else {
@@ -98,7 +102,7 @@
   </div>
 </div>
 
-<footer id="myfooter" class="bg-light-blue text-white text-center">
+<footer id="myfooter" class="bg-light-blue text-white text-center fixed-bottom">
       <p> &#169; 2018 Lucas Novaes </p>
   </footer>
 <?php include('inc/footer.php') ?>

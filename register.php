@@ -9,7 +9,7 @@ $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
 // define variables and set to empty values
 $name_error = $username_error = $sexo = $email_error = $password_error = $password_mismatch_error = $birthday_error = "";
-$name =  $username = $email = $password = $password_confirm = $birthday = $c1 = $c2 = $c3 = $c4 = $c5 = "";
+$name =  $username = $email = $password = $password_confirm = $birthday = "";
 
 //form is submitted with POST method
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

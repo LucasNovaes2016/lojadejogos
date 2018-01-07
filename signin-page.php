@@ -65,8 +65,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       if ($email==$usuario['email'] && $password==$dbpassword)
       {
         // Deu Certo
-        $id = $usuario['id'];
-        $_SESSION['id'] = $id;
+        $_SESSION['id'] = $usuario['id'];
+        $_SESSION['admin'] = $usuario['admin'];
+        $_SESSION['nome'] = $usuario['nome'];
+        $_SESSION['sexo'] = $usuario['sexo'];
+        $_SESSION['nascimento'] = $usuario['nascimento'];
+        $_SESSION['username'] = $usuario['username'];
+        $_SESSION['email'] = $usuario['email'];
+        $_SESSION['senha'] = $usuario['pwd'];
         header('Location: ' . INICIO_URL);
       } else {
         $message = "Senha inválida";
