@@ -96,7 +96,7 @@
       </div>
       <div class="row">
          <div class="col-sm-6 col-md-4">
-            <a class="btn btn-primary btn-lg btn-block mt-2" href="register.php">Realizar Cadastro</a>
+            <a class="btn btn-primary btn-lg btn-block mt-2" href="cadastro.php">Realizar Cadastro</a>
          </div>
       </div>
    </div>

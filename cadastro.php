@@ -150,37 +150,37 @@
    <div class="row justify-content-center">
       <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="col-md-6">
          <div class="form-group">
-            <label for="name"><b>Nome Completo: </b></label>
+            <label for="name" class="font-weight-bold"> Nome Completo: </label>
             <input type="text" name="name" value="<?php echo isset($_POST['name']) ? $name : ''; ?>" class="form-control" aria-describedby="emailHelp" placeholder="Seu Nome">
             <span class="error"> <?php echo $name_error; ?> </span>
          </div>
          <div class="form-group">
-            <label for="name"><b>Username: </b></label>
+            <label for="name" class="font-weight-bold"> Username: </label>
             <input type="text" name="username" value="<?php echo isset($_POST['username']) ? $username : ''; ?>" class="form-control" aria-describedby="emailHelp" placeholder="Sua username">
             <span class="error"> <?php echo $username_error; ?> </span>
          </div>
          <div class="form-group">
-            <label for="email"> <b> Email: </b> </label>
+            <label for="email" class="font-weight-bold"> Email: </label>
             <input type="text" name="email" value="<?php echo isset($_POST['email']) ? $email : ''; ?>" class="form-control" placeholder="Seu Email">
             <span class="error"> <?php echo $email_error; ?> </span>
          </div>
          <div class="form-group">
-            <label for="password"> <b> Senha: </b> </label>
+            <label for="password" class="font-weight-bold"> Senha: </label>
             <input type="password" name="password" value="<?php echo isset($_POST['password']) ? $password : ''; ?>" class="form-control" placeholder="Digite sua senha">
             <span class="error"> <?php echo $password_error; ?> </span>
          </div>
          <div class="form-group">
-            <label for="password"> <b> Digite sua senha novamente: </b> </label>
+            <label for="password" class="font-weight-bold">  Digite sua senha novamente:  </label>
             <input type="password" name="confirmPassword" value="<?php echo isset($_POST['confirmPassword']) ? $password_confirm : ''; ?>" class="form-control" placeholder="Confirme sua senha">
             <span class="error"> <?php echo $password_mismatch_error; ?> </span>
          </div>
          <div class="form-group">
-            <label for="birthday"> <b> Data de nascimento: </b> </label>
+            <label for="birthday" class="font-weight-bold">  Data de nascimento: </label>
             <input type="date" name="birthday" value="<?php echo isset($_POST['birthday']) ? $birthday : ''; ?>" class="form-control">
             <span class="error"> <?php echo $birthday_error; ?> </span>
          </div>
          <div class="form-group">
-            <label for ="sex"> <b> Sexo: </b> </label>
+            <label for ="sex" class="font-weight-bold"> Sexo: </label>
             <br>
             <div class="form-check form-check-inline">
                <label class="form-check-label">

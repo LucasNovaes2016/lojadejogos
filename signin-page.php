@@ -98,12 +98,12 @@
    <div class="row justify-content-center">
       <form method="post" action="<?php echo htmlspecialchars("signin-page.php?loginattempt=$case");?>" class="col-md-6">
          <div class="form-group">
-            <label for="name"><b>Email: </b></label>
+            <label for="name" class="font-weight-bold"> Email: </label>
             <input type="text" name="email" value="<?php echo isset($_POST['email']) ? $email : ''; ?>" class="form-control" aria-describedby="emailHelp" placeholder="Seu Email">
             <span class="error"> <?php echo $email_error; ?> </span>
          </div>
          <div class="form-group">
-            <label for="password"> <b> Senha: </b> </label>
+            <label for="password" class="font-weight-bold"> Senha: </label>
             <input type="password" name="password" value="<?php echo isset($_POST['password']) ? $password : ''; ?>" class="form-control" placeholder="Digite sua senha">
             <span class="error"> <?php echo $password_error; ?> </span>
          </div>
@@ -113,7 +113,7 @@
          </div>
          <a href="esqueceu-senha.php">Esqueci minha senha.</a>
          <h4 class="mt-5"> Ainda não tem uma conta? Cadastre-se. É de graça! </h4>
-         <a class="btn btn-primary btn-lg mt-2" href="register.php">Realizar Cadastro</a>
+         <a class="btn btn-primary btn-lg mt-2" href="cadastro.php">Realizar Cadastro</a>
       </form>
       <div class="row justify-content-center">
       </div>

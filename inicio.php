@@ -297,15 +297,15 @@
    </div>
    <?php if (!$_SESSION['admin']) : ?>
    <div class="row">
-      <div class="col-12 text-left">
+      <div class="col-12 text-center text-md-left">
          <a href="meu-carrinho.php" class="btn btn-info"> Ver Carrinho de Compras </a>
       </div>
    </div>
    <?php endif; ?>
    <?php if ($_SESSION['admin']): ?>
-   <div class="row">
-      <div class="col-12">
-         <a href="adicionar-jogo.php" class="btn btn-success"><i class="fa fa-plus fa-lg" aria-hidden="true"></i><b class="ml-1"> Novo Jogo</b></button></a>
+   <div class="row mt-2">
+      <div class="col-12 text-center text-md-left">
+         <a href="adicionar-jogo.php" class="btn btn-success"><i class="fa fa-plus fa-lg" aria-hidden="true"></i><b class="ml-1"> Novo Jogo</button></a>
       </div>
    </div>
    <?php endif; ?>
@@ -316,10 +316,10 @@
             <div class="form-inline">
                <input class="form-control mt-2" type="text" name="search_text" placeholder="Procurar Jogo">
                <button class="btn btn-primary ml-2 mt-2" type="submit" name="search"><i class="fa fa-search" aria-hidden="true"></i>
-               <b> Buscar </b> </button>
+                Buscar  </button>
             </div>
             <div class="form-group mt-2">
-               <label for ="sex"> <b> Pesquisar: </b> </label>
+               <label for ="search" class="font-weight-bold">  Pesquisar: </label>
                <div class="form-check form-check-inline ml-2">
                   <label class="form-check-label">
                   <input class="form-check-input" type="radio" name="option" value="tudo" <?php echo $array_selected_option[0];?>> Tudo
@@ -359,20 +359,20 @@
          </form>
       </div>
       <div class="col-md-12 col-lg-3 mt-1">
-         <a class="btn btn-primary pull-right" href="busca-personalizada.php"> <b>Busca Personalizada</b> </a>
+         <a class="btn btn-primary pull-right" href="busca-personalizada.php"> Busca Personalizada </a>
       </div>
    </div>
    <div class="row mt-2">
       <?php if ($size==0) { ?>
       <div class="col-12 ml-1">
-         <p> <b> Nenhum resultado foi encontrado para a sua busca :( </b> </p>
+         <p>  Nenhum resultado foi encontrado para a sua busca :(  </p>
          <a href="<?php echo ADMIN_URL; ?>"> Voltar para a página principal </a>
       </div>
       <?php } else { ?>
       <div class="col-12 ml-1">
          <div class="d-flex justify-content-between">
             <div>
-               <p> <b> <?php echo "Mostrando " . ($current_index+1) . "-" . ($current_index+count($produtos)) . " de $size resultados encontrados "; ?> </b> </p>
+               <p class="font-weight-bold">  <?php echo "Mostrando " . ($current_index+1) . "-" . ($current_index+count($produtos)) . " de $size resultados encontrados "; ?>  </p>
             </div>
             <div>
                <nav aria-label="Page navigation example">
@@ -452,11 +452,11 @@
          <div class="col-12 bordered">
             <img class="img-fluid img-center" src="<?php echo IMG_DIR.$produto['produtoID'].$produto['imgExtension']?>" alt="Card image cap">
             <h4 class="mt-2"> <?php echo $produto['nome']; ?> </h4>
-            <p> <b> Ano:</b> <?php echo $produto['ano']; ?> </p>
-            <p> <b> Categoria:</b> <?php echo $produto['categoria']; ?> </p>
-            <p> <b> Idade Minima:</b> <?php echo $produto['idadeMinima']; ?> </p>
-            <p> <b> Plataforma:</b> <?php echo $produto['plataforma']; ?> </p>
-            <p> <b> Preço:</b> <?php echo $produto['preco']; ?> </p>
+            <p> <b> Ano: </b>  <?php echo $produto['ano']; ?> </p>
+            <p> <b> Categoria: </b> <?php echo $produto['categoria']; ?> </p>
+            <p> <b> Idade Minima: </b> <?php echo $produto['idadeMinima']; ?> </p>
+            <p> <b> Plataforma: </b> <?php echo $produto['plataforma']; ?> </p>
+            <p> <b> Preço: </b> <?php echo $produto['preco']; ?> </p>
             <?php if ($_SESSION['admin']) { ?>
             <div class="d-flex justify-content-between">
                <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">

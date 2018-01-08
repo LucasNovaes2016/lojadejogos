@@ -183,20 +183,20 @@
    </div>
    <div class="row mt-2">
       <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 bordered">
-         <p class="text-center"> <b> Preencha todos os campos abaixo para adicionar um novo jogo: </b> </p>
+         <p class="text-center">  Preencha todos os campos abaixo para adicionar um novo jogo:  </p>
          <form enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
             <div class="form-group">
-               <label for="name"><b> Nome: </b></label>
+               <label for="name" class="font-weight-bold"> Nome: </label>
                <input type="text" name="name" class="form-control" aria-describedby="name" placeholder="Nome do Jogo" value="<?php echo isset($_POST['name']) ? $game_name : ''; ?>">
                <span class="error"> <?php echo $name_error; ?> </span>
             </div>
             <div class="form-group">
-               <label for="name"><b> Ano de Lançamento: </b></label>
+               <label for="name" class="font-weight-bold"> Ano de Lançamento: </label>
                <input type="text" name="year" class="form-control" aria-describedby="year" placeholder="Ano de Lançamento" maxlength="4"  value="<?php echo isset($_POST['year']) ? $year : ''; ?>">
                <span class="error"> <?php echo $year_error; ?> </span>
             </div>
             <div class="form-group">
-               <label for="exampleSelect1"> <b> Categoria: </b> </label>
+               <label for="exampleSelect1" class="font-weight-bold">  Categoria:  </label>
                <select name="categoria" class="form-control" id="exampleSelect1">
                   <option <?php echo $array_selected_category[0];?>> Acao </option>
                   <option <?php echo $array_selected_category[1];?>> Aventura </option>
@@ -212,7 +212,7 @@
                <span class="error"> <?php echo $category_error; ?> </span>
             </div>
             <div class="form-group">
-               <label for="exampleSelect1"> <b> Plataforma: </b> </label>
+               <label for="exampleSelect1" class="font-weight-bold">  Plataforma:  </label>
                <select name="plataforma" class="form-control" id="exampleSelect1">
                   <option <?php echo $array_selected_platform[0];?>> Playstation 2 </option>
                   <option <?php echo $array_selected_platform[1];?>> Playstation 3 </option>
@@ -228,7 +228,7 @@
                <span class="error"> <?php echo $platform_error; ?> </span>
             </div>
             <div class="form-group">
-               <label for="exampleSelect1"> <b> Idade Minima: </b> </label>
+               <label for="exampleSelect1" class="font-weight-bold">  Idade Minima:  </label>
                <select name = "idade_minima" class="form-control" id="exampleSelect1">
                   <option <?php echo $array_selected_age[0];?>> Livre </option>
                   <option <?php echo $array_selected_age[1];?>> 6 </option>
@@ -243,7 +243,7 @@
                <span class="error"> <?php echo $min_age_error; ?> </span>
             </div>
             <div class="form-group">
-               <label for="valor"> <b> Preço: </b> </label>
+               <label for="valor" class="font-weight-bold">  Preço:  </label>
                <div class="input-group">
                   <span class="input-group-addon">R$</span>
                   <input type="text" name="price" class="form-control" placeholder="00.00" maxlength="6" value="<?php echo $price;?>">
@@ -251,7 +251,7 @@
                <span class="error"> <?php echo $price_error; ?> </span>
             </div>
             <div class="form-group">
-               <label for="imagem"><b> Selecione uma imagem para o jogo: </b></label>
+               <label for="imagem" class="font-weight-bold"> Selecione uma imagem para o jogo: </label>
                <input type="file" name="file" required> <br> <br>
                <div class="text-right">
                   <a href="<?php echo INICIO_URL;?>" class="btn btn-danger">Cancelar</a>

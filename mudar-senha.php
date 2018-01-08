@@ -118,17 +118,17 @@
                <h3> Alteração de Senha </h3>
             </div>
             <div class="form-group">
-               <label for="currentpassword"> <b> Senha Atual: </b> </label>
+               <label for="currentpassword" class="font-weight-bold">  Senha Atual:  </label>
                <input type="password" name="current_password" value="<?php echo isset($_POST['current_password']) ? $current_password : ''; ?>" class="form-control" placeholder="Digite sua senha atual">
                <span class="error"> <?php echo $current_password_error; ?> </span>
             </div>
             <div class="form-group">
-               <label for="newpassword"> <b> Nova Senha: </b> </label>
+               <label for="newpassword" class="font-weight-bold">  Nova Senha:  </label>
                <input type="password" name="new_password" value="<?php echo isset($_POST['new_password']) ? $new_password : ''; ?>" class="form-control" placeholder="Digite a sua nova senha">
                <span class="error"> <?php echo $new_password_error; ?> </span>
             </div>
             <div class="form-group">
-               <label for="newpasswordconfirm"> <b> Confirme sua nova senha: </b> </label>
+               <label for="newpasswordconfirm" class="font-weight-bold">  Confirme sua nova senha:  </label>
                <input type="password" name="new_password_confirm" value="<?php echo isset($_POST['new_password_confirm']) ? $new_password_confirm : ''; ?>" class="form-control" placeholder="Digite novamente sua nova senha">
                <span class="error"> <?php echo $confirm_new_password_error; ?> </span>
             </div>

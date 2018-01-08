@@ -57,7 +57,7 @@
      $data = htmlspecialchars($data);
      return $data;
    }
-   
+
    ?>
 <?php include('inc/header.php') ?>
 <div class="container mt-5">
@@ -67,7 +67,7 @@
             <h4> Informe seu endereço de email. Enviaremos uma nova senha para você. </h4>
          </div>
          <div class="form-group">
-            <label for="name"><b>Email: </b></label>
+            <label for="name" class="font-weight-bold"> Email: </label>
             <input type="text" name="email" value="<?php echo isset($_POST['email']) ? $email : ''; ?>" class="form-control" aria-describedby="emailHelp" placeholder="Seu Email">
             <span class="error"> <?php echo $email_error; ?> </span>
          </div>

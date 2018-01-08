@@ -200,27 +200,27 @@
                <a href="mudar-senha.php">Quero mudar minha senha</a>
             </div>
             <div class="form-group">
-               <label for="name"><b>Nome Completo: </b></label>
+               <label for="name" class="font-weight-bold">Nome Completo: </label>
                <input type="text" name="name" value="<?php echo $name; ?>" class="form-control" aria-describedby="emailHelp" placeholder="Seu Nome">
                <span class="error"> <?php echo $name_error; ?> </span>
             </div>
             <div class="form-group">
-               <label for="name"><b>Username: </b></label>
+               <label for="name" class="font-weight-bold">Username: </label>
                <input type="text" name="username" value="<?php echo $username; ?>" class="form-control" aria-describedby="emailHelp" placeholder="Sua username">
                <span class="error"> <?php echo $username_error; ?> </span>
             </div>
             <div class="form-group">
-               <label for="birthday"> <b> Data de nascimento: </b> </label>
+               <label for="birthday" class="font-weight-bold">  Data de nascimento:  </label>
                <input type="date" name="birthday" value="<?php echo $birthday; ?>" class="form-control">
                <span class="error"> <?php echo $birthday_error; ?> </span>
             </div>
             <div class="form-group">
-               <label for="email"> <b> Email: </b> </label>
+               <label for="email" class="font-weight-bold">  Email:  </label>
                <input type="text" name="email" value="<?php echo $email; ?>" class="form-control" placeholder="Seu Email">
                <span class="error"> <?php echo $email_error; ?> </span>
             </div>
             <div class="form-group">
-               <label for ="sex"> <b> Sexo: </b> </label>
+               <label for ="sex" class="font-weight-bold">  Sexo:  </label>
                <br>
                <div class="form-check form-check-inline">
                   <label class="form-check-label">
