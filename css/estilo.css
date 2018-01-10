@@ -12,7 +12,7 @@ hr {
   padding: 14px;
 }
 
-.row.display-flex {
+/* .row.display-flex {
   display: flex;
   flex-wrap: wrap;
 }
@@ -20,7 +20,7 @@ hr {
 .row.display-flex > [class*='col-'] {
   display: flex;
   flex-direction: column;
-}
+} */
 
 h4 {
   display: block;
@@ -29,10 +29,6 @@ h4 {
 
 .error {
   color: red;
-}
-
-.dropdown-menu {
-  min-width: 300px;
 }
 
 .error {

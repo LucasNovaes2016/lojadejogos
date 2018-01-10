@@ -24,10 +24,13 @@
      $message = "Você deve preencher todos os campos para entrar";
    } else if ($case==2)
    {
-     $message = "O email digitado não existe";
+     $message = "O email digitado não está vinculado a nenhuma conta.";
    } else if ($case==3)
    {
      $message = "Campos Inválidos";
+   } else if ($case==4)
+   {
+     $message = "A conta especificada ainda não foi ativada. Entre no seu email para validá-la.";
    }
 
    if ($_SERVER["REQUEST_METHOD"] == "POST") {
@@ -92,11 +95,13 @@
    ?>
 <?php include('inc/header.php') ?>
 <div class="container mt-3">
-   <div class="text-center">
-      <p <?php if ($is_message_error) { echo "class=error";} ?>> <?php echo $message ?> </p>
+   <div class="row text-center">
+     <div class="m-2 col-md-9 col-lg-7 m-auto alert alert-danger" role="alert">
+        <span> <?php echo $message ?> </span>
+      </div>
    </div>
-   <div class="row justify-content-center">
-      <form method="post" action="<?php echo htmlspecialchars("signin-page.php?loginattempt=$case");?>" class="col-md-6">
+   <div class="row">
+      <form method="post" action="<?php echo htmlspecialchars("signin-page.php?loginattempt=$case");?>" class="col-md-8 col-lg-6 m-auto">
          <div class="form-group">
             <label for="name" class="font-weight-bold"> Email: </label>
             <input type="text" name="email" value="<?php echo isset($_POST['email']) ? $email : ''; ?>" class="form-control" aria-describedby="emailHelp" placeholder="Seu Email">

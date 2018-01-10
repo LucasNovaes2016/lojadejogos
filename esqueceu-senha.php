@@ -18,7 +18,7 @@
        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
          $email_error = "Endereço de email inválido";
        } else {
-         $query = "SELECT * FROM usuarios WHERE email = ?";
+         $query = "SELECT email FROM usuarios WHERE email = ?";
          $stm = $pdo->prepare($query);
          $stm->execute([$email]);
          if ($stm->rowCount()==0)

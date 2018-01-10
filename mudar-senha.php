@@ -112,7 +112,7 @@
 </div>
 <div class="container mt-5">
    <div class="row mt-2">
-      <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 bordered">
+      <div class="col-md-8 col-lg-6 m-auto bordered">
          <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
             <div class="text-center">
                <h3> Alteração de Senha </h3>

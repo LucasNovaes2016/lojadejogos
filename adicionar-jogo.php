@@ -182,7 +182,7 @@
       </div>
    </div>
    <div class="row mt-2">
-      <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 bordered">
+      <div class="col-md-8 col-lg-6 m-auto bordered">
          <p class="text-center">  Preencha todos os campos abaixo para adicionar um novo jogo:  </p>
          <form enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
             <div class="form-group">

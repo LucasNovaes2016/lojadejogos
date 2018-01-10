@@ -61,7 +61,7 @@
          if ($username!=$_SESSION['username'])
          {
            // Verificando se ja existe um usuario com esta username
-           $query = "SELECT * FROM usuarios WHERE username = ?";
+           $query = "SELECT username FROM usuarios WHERE username = ?";
            $stm = $pdo->prepare($query);
            $stm->execute([$username]);
            $number_of_users = $stm->rowCount();
@@ -110,7 +110,7 @@
            if ($email!=$_SESSION['email'])
            {
              // Verificando se ja existe um usuario com esta username
-             $query = "SELECT * FROM usuarios WHERE email = ?";
+             $query = "SELECT email FROM usuarios WHERE email = ?";
              $stm = $pdo->prepare($query);
              $stm->execute([$email]);
              $number_of_users = $stm->rowCount();
@@ -191,7 +191,7 @@
       </div>
    </div>
    <div class="row mt-2">
-      <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 bordered">
+      <div class="col-md-8 col-lg-6 m-auto bordered">
          <div class="text-center success">
             <h3> <?php if (isset($_SESSION['mudou_senha'])) { echo $_SESSION['mudou_senha']; unset($_SESSION['mudou_senha']);} ?> </h3>
          </div>

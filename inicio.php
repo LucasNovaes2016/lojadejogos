@@ -18,14 +18,6 @@
    $pdo = new PDO ($dsn, DB_USER, DB_PASS);
    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-   // Vendo qual é o usuario que está logado
-   $id = test_input($_SESSION['id']);
-   $query = "SELECT * FROM usuarios WHERE id = ?";
-   $stm = $pdo->prepare($query);
-   $stm->execute([$id]);
-   $usuario = $stm->fetch(PDO::FETCH_ASSOC);
-   $mensagem = "Seja bem-vindo(a), " . $usuario['nome'];
-
    $products_per_page = 8; // Total de produtos por pagina. Default = 8
    $current_page = 1; // Pagina atual. Default = 1
    $size = 0; // Total de resultados a serem exibidos. Default = 1
@@ -155,12 +147,19 @@
    {
      if (isset($_POST['add_to_cart']))
      {
-
+       $game_name = $_POST['game_name'];
        array_push($_SESSION['cart'], $_POST['add_id']);
-       array_push($_SESSION['cart_names'], $_POST['game_name']);
+       array_push($_SESSION['cart_names'], $game_name);
        array_push($_SESSION['cart_prices'], $_POST['game_price']);
 
-       echo '<div class="container"> <p class="success"> Produto adicionado ao carrinho </p> </div>';
+       echo '<div class="container">
+                <div class="alert alert-success alert-dismissible fade show">
+                	<button class="close" data-dismiss="alert" type="button">
+                		<span> &times; </span>
+                	</button>
+                	<strong>' . "$game_name" . '</strong> foi adicionado ao carrinho </strong>
+                </div>
+            </div>';
 
      }
    }
@@ -274,7 +273,7 @@
          <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown">
                <a class="nav-link dropdown-toggle text-white" href="http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-               Minha conta
+               <?php echo $_SESSION['username']?>
                </a>
                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
                   <a class="dropdown-item" href="meu-perfil.php">Meu Perfil</a>
@@ -448,7 +447,7 @@
       </div>
       <?php } ?>
       <?php foreach($produtos as $produto): ?>
-      <div class="col-sm-6 col-md-4 col-lg-3 mt-2">
+      <div class="col-sm-6 col-lg-4 col-xl-3 mt-2">
          <div class="col-12 bordered">
             <img class="img-fluid img-center" src="<?php echo IMG_DIR.$produto['produtoID'].$produto['imgExtension']?>" alt="Card image cap">
             <h4 class="mt-2"> <?php echo $produto['nome']; ?> </h4>
@@ -471,7 +470,7 @@
                   <input type="hidden" name="add_id" value="<?php echo $produto['produtoID']; ?>">
                   <input type="hidden" name="game_name" value="<?php echo $produto['nome']; ?>">
                   <input type="hidden" name="game_price" value="<?php echo $produto['preco']; ?>">
-                  <button type="submit" name="add_to_cart" value="Adicionar ao carrinho" class="btn btn-success" ><i class="fa fa-cart-plus fa-lg" aria-hidden="true"></i> Adicionar ao Carrinho </button>
+                  <button type="submit" name="add_to_cart" value="Adicionar ao carrinho" class="btn btn-success btn-block" ><i class="fa fa-cart-plus fa-lg" aria-hidden="true"></i> Adicionar ao Carrinho </button>
                </form>
             </div>
             <?php }  ?>

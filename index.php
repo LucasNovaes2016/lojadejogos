@@ -11,7 +11,6 @@
    $pdo = new PDO ($dsn, DB_USER, DB_PASS);
    $pdo->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 
-
    // define variables and set to empty values
    $username = $password = "";
 
@@ -41,16 +40,23 @@
 
          if ($email==$usuario['email'] && $password==$dbpassword)
          {
-           // Deu Certo
-           $_SESSION['id'] = $usuario['id'];
-           $_SESSION['admin'] = $usuario['admin'];
-           $_SESSION['nome'] = $usuario['nome'];
-           $_SESSION['sexo'] = $usuario['sexo'];
-           $_SESSION['nascimento'] = $usuario['nascimento'];
-           $_SESSION['username'] = $usuario['username'];
-           $_SESSION['email'] = $usuario['email'];
-           $_SESSION['senha'] = $usuario['pwd'];
-           header('Location: ' . INICIO_URL);
+
+           if ($usuario['ativo']!="1")
+           {
+             $_SESSION['waiting_validation'] = true;
+             exit();
+           } else {
+             // Deu Certo
+             $_SESSION['id'] = $usuario['id'];
+             $_SESSION['admin'] = $usuario['admin'];
+             $_SESSION['nome'] = $usuario['nome'];
+             $_SESSION['sexo'] = $usuario['sexo'];
+             $_SESSION['nascimento'] = $usuario['nascimento'];
+             $_SESSION['username'] = $usuario['username'];
+             $_SESSION['email'] = $usuario['email'];
+             $_SESSION['senha'] = $usuario['pwd'];
+             header('Location: ' . INICIO_URL);
+           }
 
          } else {
            header('Location: signin-page.php?loginattempt=3');

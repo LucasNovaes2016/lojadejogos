@@ -1,4 +1,5 @@
 <?php
+
    session_start();
    require('config/config.php');
    $dsn = 'mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';';
@@ -49,7 +50,7 @@
        }
 
        // Verificando se ja existe um usuario com esta username
-       $query = "SELECT * FROM usuarios WHERE username = ?";
+       $query = "SELECT username FROM usuarios WHERE username = ?";
        $stm = $pdo->prepare($query);
        $stm->execute([$username]);
        $number_of_users = $stm->rowCount();
@@ -124,11 +125,26 @@
      if ($name_error == "" and $username_error == "" and $email_error == "" and $password_error == "" and $password_mismatch_error == "" and $birthday_error == "")
      {
 
+       // Gerando um codigo aleatorio para o usuario
+       $characters = 'abcdefghijklmnopqrstuvwxyz0123456789'; // universo de caracteres
+       $codigo = ''; // variavel que vai conter o codigo
+       $max = strlen($characters) - 1;
+
+       for ($i = 0; $i < 32; $i++)
+       {
+           $codigo .= $characters[mt_rand(0, $max)];
+       }
+
        $password = PASSWORD_HASH($password, PASSWORD_BCRYPT, array('cost' => 12));
-       $query = "INSERT INTO usuarios (nome, sexo, nascimento, username, email, pwd) VALUES (?, ?, ?, ?, ?, ?)";
+       $query = "INSERT INTO usuarios (nome, sexo, nascimento, username, email, pwd, ativo) VALUES (?, ?, ?, ?, ?, ?, ?)";
        $stm = $pdo->prepare($query);
-       $stm->execute([$name, $sex, $birthday, $username, $email, $password]);
-       $_SESSION['successful_login'] = true;
+       $stm->execute([$name, $sex, $birthday, $username, $email, $password, $codigo]);
+
+       $link = "localhost/estudos/lojadejogos/validacao-conta.php?codigo=$codigo";
+       $message = "Ola, $name. Uma nova conta na GameScore foi criada utilizando a sua conta de email. Caso seja você quem criou a conta, entre no link abaixo para validar a sua conta: $link";
+
+       mail($email, "Validação de conta", $message);
+       $_SESSION['waiting_validation'] = true;
        header('Location: signup-success.php');
      }
 
@@ -147,12 +163,12 @@
    <div class="text-center">
       <h1> Inscreva-se no site </h1>
    </div>
-   <div class="row justify-content-center">
-      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="col-md-6">
+   <div class="row">
+      <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" class="col-md-8 col-lg-6 m-auto">
          <div class="form-group">
             <label for="name" class="font-weight-bold"> Nome Completo: </label>
             <input type="text" name="name" value="<?php echo isset($_POST['name']) ? $name : ''; ?>" class="form-control" aria-describedby="emailHelp" placeholder="Seu Nome">
-            <span class="error"> <?php echo $name_error; ?> </span>
+            <span class="invalid-feedback"> <?php echo $name_error;  ?> </span>
          </div>
          <div class="form-group">
             <label for="name" class="font-weight-bold"> Username: </label>

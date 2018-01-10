@@ -13,6 +13,13 @@
 
    $price_to_pay = 0;
 
+    if (isset($_POST['emptycart']))
+    {
+      $_SESSION['cart'] = array();
+      $_SESSION['cart_names'] = array();
+      $_SESSION['cart_prices'] = array();
+    }
+
    if (isset($_POST['delete']))
    {
      array_splice($_SESSION['cart'], $_POST['remove_index'], 1);
@@ -72,7 +79,7 @@
 </div>
 <div class="container mt-2">
    <div class="row">
-      <div class="col-sm-12 col-md-8 offset-md-2">
+      <div class="col-sm-12 col-md-8 m-auto">
          <div class="text-center">
             <h2> Meu Carrinho: </h2>
          </div>
@@ -80,7 +87,7 @@
             <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                <input type="submit" name="buy" value="Comprar" class="btn btn-success">
             </form>
-            <a href="inicio.php" class="btn btn-primary">Comprar mais produtos</a>
+            <a href="inicio.php" class="btn btn-primary">Comprar <?php if (count($_SESSION['cart_names'])>0) {echo "mais";}?> produtos</a>
          </div>
          <div class="mt-2">
             <table class="table table-hover">
@@ -101,12 +108,24 @@
                      <td>
                         <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
                            <input type="hidden" name="remove_index" value="<?php echo $var; ?>">
-                           <input type="submit" name="delete" value="Remover" class="btn btn-danger">
+                           <input type="submit" name="delete" value="Remover" class="btn btn-danger btn-block w-75">
                         </form>
                      </td>
                   </tr>
                   <?php } ?>
-               </tbody>
+                  <!-- Se há pelo menos um produto no carrinho, mostrar o botão de esvaziar o carrinho -->
+                  <?php if (count($_SESSION['cart_names'])>0): ?>
+                  <tr>
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td>
+                      <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+                        <input type="submit" name="emptycart" value="Esvaziar Carrinho" class="btn btn-warning btn-block w-75">
+                      </form>
+                    </td>
+                  </tr>
+                <?php endif; ?>
             </table>
             <h4> Total a pagar: <?php echo $price_to_pay; ?> </h4>
          </div>

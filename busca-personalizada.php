@@ -145,7 +145,7 @@
       </div>
    </div>
    <div class="row mt-2">
-      <div class="col-md-8 offset-md-2 col-lg-6 offset-lg-3 bordered">
+      <div class="col-md-8 col-lg-6 m-auto bordered">
          <p class="text-center"> <b> reencha todos os campos que desejar. Se não preencher um ou mais campos, a pesquisa irá considerar qualquer resultado na categoria do(s) campo(s) deixados em branco. </b> </p>
          <form enctype="multipart/form-data" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST">
             <div class="form-group">
